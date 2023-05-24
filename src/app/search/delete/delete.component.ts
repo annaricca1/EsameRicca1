@@ -16,8 +16,6 @@ export class DeleteComponent{
   author: string = '';
 
   constructor(private archiveService: ArchiveService) {}
-  onInit(){
-  }
   deleteBook() {
     console.log(this.document);
     const bookToDelete: Document = {

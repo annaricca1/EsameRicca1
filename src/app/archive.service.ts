@@ -38,6 +38,13 @@ export class ArchiveService {
       this.saveDocuments(filteredDocs).subscribe();
     });
   }
+
+  loanBook(book: Document): void {
+    this.getDocuments().subscribe((docs) => {
+      const filteredDocs = docs.filter((doc) => doc.title !== book.title || doc.author !== book.author);
+      this.saveDocuments(filteredDocs).subscribe();
+    });
+  }
   
   
 }

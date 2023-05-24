@@ -1,15 +1,15 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { InputComponent } from '../../input/input.component';
+import { ArchiveService } from '../../archive.service';
 
 @Component({
   selector: 'app-loan',
   templateUrl: './loan.component.html',
-  styleUrls: ['./loan.component.css']
+  styleUrls: ['./loan.component.css'],
+  standalone: true, 
+  imports:[InputComponent]
 })
-export class LoanComponent implements OnInit {
-
-  constructor() { }
-
-  ngOnInit() {
-  }
+export class LoanComponent {
+  
 
 }

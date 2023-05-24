@@ -21,8 +21,4 @@ button {
 }
 
 .add-content{
-  height: 100px;
-  width: 50%;
-  text-align: left;
-  line-height: 50px; /* verticale */
-}
+  text-align: left;}
