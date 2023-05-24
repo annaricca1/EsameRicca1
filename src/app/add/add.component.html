@@ -1,6 +1,8 @@
 <p>Aggiungi un documento</p>
 <div class="add-content">
-  <app-input label="Titolo" (inputValue)="title = $event"></app-input>
+  <app-input label="Titolo" (inputValue)="title = $event"></app-input><br>
   <app-input label="Autore" (inputValue)="author = $event"></app-input>
-  <button (click)="addBook()">Aggiungi</button>
+  <button><span class="material-symbols-outlined" (click)="addBook()">
+    add_circle
+    </span></button>
 </div>
