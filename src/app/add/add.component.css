@@ -1,11 +1,9 @@
-table{
-  font-family: 'Courier New', Courier, monospace;
-  color: #A0522D;
-}
+
 p{
-  font-family: 'Courier New', Courier, monospace;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
   color: #A0522D;
   text-align: left;
+  font-weight: bold;
 }
 button {
   background-color: transparent;
@@ -14,4 +12,17 @@ button {
   cursor: pointer;
   overflow: hidden;
   outline: none;
+  color: #A0522D;  
+
+}
+
+.material-symbols-outlined{
+  font-size: 35px;
+}
+
+.add-content{
+  height: 100px;
+  width: 50%;
+  text-align: left;
+  line-height: 50px; /* verticale */
 }

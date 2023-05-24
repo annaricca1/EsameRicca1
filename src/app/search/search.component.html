@@ -5,9 +5,9 @@
 
 <ul>
   <li *ngFor="let document of searchResults">
-    {{ document.position }} - {{ document.title }} - {{ document.author }} 
+    ID {{ document.position }} - Titolo: {{ document.title }} - Autore: {{ document.author }} - Prestato a: {{ document.borrower}}
+    <br>
     <app-delete [document]="document"></app-delete>
-    <span class="material-symbols-outlined"> menu_book </span>
   
   </li>
 </ul>

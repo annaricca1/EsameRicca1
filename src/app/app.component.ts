@@ -12,4 +12,6 @@ import { SearchComponent } from './search/search.component';
   standalone: true,
   imports: [CommonModule, AddComponent, SearchComponent],
 })
-export class AppComponent {}
+export class AppComponent {
+  
+}

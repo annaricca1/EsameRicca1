@@ -1,5 +1,15 @@
 p{
-  font-family: 'Courier New', Courier, monospace;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
   color: #A0522D;
   text-align: left;
+  font-weight: bold;
+}
+ul {
+  list-style-type: none;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  color: #A0522D;
+  text-align: left;
+  font-size: 12px;
+
+
 }
