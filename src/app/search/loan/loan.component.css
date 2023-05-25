@@ -1,0 +1,14 @@
+
+.material-symbols-outlined{
+  font-size: 20px;
+  color: black;
+  
+}
+.button1{
+  background-color: transparent;
+  background-repeat: no-repeat;
+  border: none;
+  cursor: pointer;
+  overflow: hidden;
+  outline: none;
+}

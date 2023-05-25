@@ -7,10 +7,7 @@
   <li *ngFor="let document of searchResults">
     ID {{ document.position }} - Titolo: {{ document.title }} - Autore: {{ document.author }} - Prestato a: {{ document.borrower}}
     <br>
-    <app-delete [document]="document"></app-delete> 
-    <button (click)="selezionaLoan()"><span class="material-symbols-outlined" > menu_book </span></button>
-
-     <app-loan *ngIf = "selezionata !== false" (annullaEvent)="selezionata=$event"></app-loan>
+    <app-delete [document]="document"></app-delete><app-loan></app-loan>
   
   </li>
 </ul>

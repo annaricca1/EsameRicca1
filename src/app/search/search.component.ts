@@ -17,20 +17,19 @@ import { LoanComponent } from './loan/loan.component';
 })
 export class SearchComponent {
   searchResults: Document[] = [];
-  selezionata: boolean = false;
 
   constructor(private archiveService: ArchiveService) {}
 
-  selezionaLoan(){
-    this.selezionata = true; 
-  };
+ 
 
   search(value: string) {
+    const lowercaseValue = value.toLowerCase(); // Converti il valore in minuscolo
+
     this.archiveService
       .getDocuments()
       .subscribe(
         (e) =>
-          (this.searchResults = e.filter((doc) => doc.title.includes(value) || doc.author.includes(value)))
+          (this.searchResults = e.filter((doc) => doc.title.toLowerCase().includes(lowercaseValue) || doc.author.toLowerCase().includes(lowercaseValue)))
       );
   }
   
