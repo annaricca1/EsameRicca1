@@ -18,6 +18,7 @@ import { LoanComponent } from './loan/loan.component';
 export class SearchComponent {
   searchResults: Document[] = [];
   selezionata: boolean = false;
+
   constructor(private archiveService: ArchiveService) {}
 
   selezionaLoan(){
@@ -29,7 +30,7 @@ export class SearchComponent {
       .getDocuments()
       .subscribe(
         (e) =>
-          (this.searchResults = e.filter((doc) => doc.title.includes(value)))
+          (this.searchResults = e.filter((doc) => doc.title.includes(value) || doc.author.includes(value)))
       );
   }
   

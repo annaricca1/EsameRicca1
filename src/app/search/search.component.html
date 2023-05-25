@@ -10,7 +10,7 @@
     <app-delete [document]="document"></app-delete> 
     <button (click)="selezionaLoan()"><span class="material-symbols-outlined" > menu_book </span></button>
 
-     <app-loan *ngIf = "selezionata !== false"></app-loan>
+     <app-loan *ngIf = "selezionata !== false" (annullaEvent)="selezionata=$event"></app-loan>
   
   </li>
 </ul>
