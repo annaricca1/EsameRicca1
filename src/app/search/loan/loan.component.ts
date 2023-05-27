@@ -15,10 +15,15 @@ import { Document } from '../../document.model';
 
 })
 export class LoanComponent {
+  @Input() documentId: number;
   selezionata: boolean = false;
-  borrower: string = '';
+  borrower: string;
+  title: string;
+  author: string;
+  position: number; 
 
   selezionaLoan(){
+    
     this.selezionata = true; 
   };
   annulla() {
@@ -26,19 +31,34 @@ export class LoanComponent {
   }
 
   constructor(private archiveService: ArchiveService){}
+  loanDocuments(): void {
+    this.archiveService.getDocuments().subscribe((documents: Document[]) => {
+      const updatedDocuments = documents.map((document: Document) => {
+        if (document.position === this.documentId) {
+          document.borrower = this.borrower;
+        }
+        return document;
+      });
+      this.archiveService.saveDocuments(updatedDocuments).subscribe();
+    });
+  }
+  
+  
 
-  loanDocuments(){
+/*
+  loanDocuments(): void {
     this.archiveService.getDocuments().subscribe((docs) =>{
       const selectedDocs = docs.map(doc => {
-        return {
-          position: doc.position, 
+          return {
+          position:  doc.position, 
           title: doc.title, 
           author: doc.author, 
-          borrower: this.borrower}; 
+          borrower: this.borrower};
       });
         this.archiveService.saveDocuments(selectedDocs).subscribe();
     }); 
   }
+  */
 }
 
  

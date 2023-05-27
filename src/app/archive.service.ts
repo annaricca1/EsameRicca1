@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { switchMap } from 'rxjs/operators';
 import { Document } from './document.model';
 
 @Injectable({
@@ -19,6 +20,7 @@ export class ArchiveService {
     return this.http.get<string>(url).pipe(map((resp) => JSON.parse(resp))); // va parsata in JSON da una stringa
   }
 
+ 
   saveDocuments(documents: Document[]): Observable<any> {
     const url = this.apiUrl + 'set?key=' + this.apiKey;
     console.log(JSON.stringify(documents));
@@ -38,6 +40,12 @@ export class ArchiveService {
       this.saveDocuments(filteredDocs).subscribe();
     });
   }
+
+
+  
+  
+  
+  
 
  
   

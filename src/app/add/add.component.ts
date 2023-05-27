@@ -24,7 +24,7 @@ export class AddComponent {
       title: this.title,
       author: this.author,
       position: Math.round(Math.random()*100),
-      borrower: '',
+      borrower: 'disponibile',
     });
   }
   

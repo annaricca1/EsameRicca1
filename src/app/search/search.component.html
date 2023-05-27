@@ -5,9 +5,10 @@
 
 <ul>
   <li *ngFor="let document of searchResults">
-    ID {{ document.position }} - Titolo: {{ document.title }} - Autore: {{ document.author }} - Prestato a: {{ document.borrower}}
+    ID {{ document.position }} - Titolo: {{ document.title }} - Autore: {{ document.author }} - Prestito: {{ document.borrower}}
     <br>
-    <app-delete [document]="document"></app-delete><app-loan></app-loan>
+    <app-delete [document]="document"></app-delete>
+    <app-loan [documentId]="document.position"></app-loan>
   
   </li>
 </ul>
