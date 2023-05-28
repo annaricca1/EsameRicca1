@@ -1,9 +1,14 @@
-<p>Aggiungi un documento</p>
-<div class="add-content">
-  
+<button (click)="openAdd()"> + Aggiungi un documento</button>
+
+<div class="add-content" *ngIf = "selezione !== false">
   <app-input label="Titolo" (inputValue)="title = $event"></app-input><br>
-  <app-input label="Autore" (inputValue)="author = $event"></app-input> 
-</div>
-<button><span class="material-symbols-outlined" (click)="addBook()">
+  <app-input label="Autore" (inputValue)="author = $event"></app-input> <br>
+<button><span class="material-symbols-outlined" (click)="addBook()" (click)="openMessage()">
   add_circle
-  </span></button>
+  </span></button>   <button (click)="closeAdd()"><span class="material-symbols-outlined">
+    close
+    </span>  </button>
+
+<p *ngIf = "selezione2 !== false">Documento aggiunto con successo!   <button (click)="closeAdd()"> Esci </button>
+</p>
+</div>

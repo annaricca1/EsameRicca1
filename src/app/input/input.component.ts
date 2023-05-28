@@ -13,4 +13,5 @@ export class InputComponent {
   onChange(event: Event) {
     this.inputValue.emit((event.target as HTMLInputElement).value);
   }
+
 }

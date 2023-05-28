@@ -22,11 +22,10 @@ export class LoanComponent {
   author: string;
   position: number; 
 
-  selezionaLoan(){
-    
+  openLoan(){
     this.selezionata = true; 
   };
-  annulla() {
+  closeLoan() {
     this.selezionata = false;
   }
 
