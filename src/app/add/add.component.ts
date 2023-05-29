@@ -21,6 +21,7 @@ export class AddComponent {
 
   title: string = '';
   author: string = '';
+  position: number = 0;
 
   openAdd(){
     this.selezione = true; 
@@ -47,9 +48,10 @@ export class AddComponent {
       this.archiveService.addBook({
         title: this.title,
         author: this.author,
-        position: Math.round(Math.random()*100),
+        position: this.position, //Math.round(Math.random()*100),
         borrower: 'disponibile',
       });
+      this.position++;
       this.openMessageAdd();
 
     }
