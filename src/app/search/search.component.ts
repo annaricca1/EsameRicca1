@@ -17,6 +17,7 @@ import { LoanComponent } from './loan/loan.component';
 })
 export class SearchComponent {
   searchResults: Document[] = [];
+  isBorrowed: boolean; 
 
   constructor(private archiveService: ArchiveService) {}
 

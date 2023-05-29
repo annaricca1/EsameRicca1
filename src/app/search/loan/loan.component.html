@@ -1,4 +1,4 @@
-<button (click)="openLoan()" class="button1">
+<button (click)="openLoan()" class="button1" *ngIf="!isBorrowed  " >
   <span class="material-symbols-outlined" > menu_book </span></button>
 <p *ngIf = "selezionata !== false"> Vuoi prendere in prestito questo libro? <br>
   Per continuare devi inserire alcuni dati:<br> 
@@ -6,3 +6,11 @@
   <button (click)="loanDocuments()"> Procedi </button>  
   <button (click)="closeLoan()">Annulla </button>
 </p>
+
+<button *ngIf= " isBorrowed "><span class="material-symbols-outlined">
+  redo
+  </span>
+  </button> 
+
+
+

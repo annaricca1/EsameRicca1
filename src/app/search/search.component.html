@@ -7,7 +7,7 @@
     ID {{ document.position }} - Titolo: {{ document.title }} - Autore: {{ document.author }} - Prestito: {{ document.borrower}}
     <br>
     <app-delete [document]="document"></app-delete>
-    <app-loan [documentId]="document.position"></app-loan>
+    <app-loan [isBorrowed]= "document.borrower != 'disponibile' ? true: false" [documentId]="document.position"></app-loan>
   
   </li>
 </ul>

@@ -16,11 +16,14 @@ import { Document } from '../../document.model';
 })
 export class LoanComponent {
   @Input() documentId: number;
+  @Input() isBorrowed: boolean; 
   selezionata: boolean = false;
   borrower: string;
   title: string;
   author: string;
   position: number; 
+
+  
 
   openLoan(){
     this.selezionata = true; 
