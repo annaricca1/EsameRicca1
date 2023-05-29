@@ -1,5 +1,5 @@
 <div>
-  <app-input label="Cerca" (inputValue)="search($event)"></app-input>
+  <app-input label="Cerca" [type]="'text'" (inputValue)="search($event)"></app-input>
 </div>
 <p *ngIf="message">{{ message }}</p>
 <ul>

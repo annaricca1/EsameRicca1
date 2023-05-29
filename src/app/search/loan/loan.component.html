@@ -2,7 +2,7 @@
   <span class="material-symbols-outlined" > menu_book </span></button>
 <p *ngIf = "selezionataLoan !== false"> Vuoi prendere in prestito questo libro? <br>
   Per continuare devi inserire alcuni dati:<br> 
-  <app-input label="Nome e cognome" (inputValue)="borrower = $event"> </app-input>
+  <app-input label="Nome e cognome" [type]="'text'" (inputValue)="borrower = $event"> </app-input>
   <button (click)="loanDocuments()"> Procedi </button>  
   <button (click)="closeLoan()">Annulla </button>
 </p>

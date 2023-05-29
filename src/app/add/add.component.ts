@@ -46,10 +46,13 @@ export class AddComponent {
 
   addBook() {
     if (this.title && this.author && this.position){
-      if (this.positionList.includes(this.position)) {
-        console.log('Posizione già presente nella biblioteca');
-        this.openMessageNoAdd();
-      } 
+      this.archiveService.getDocuments().subscribe((documents) => {
+        const positions = documents.map((doc) => doc.position);
+        if (positions.includes(this.position)) {
+          console.log('Posizione già presente nella biblioteca');
+          this.openMessageNoAdd();
+        }
+      
       else {
       this.positionList.push(this.position),
       console.log(this.positionList);
@@ -61,7 +64,8 @@ export class AddComponent {
       });
       this.openMessageAdd();
     }
-  }
+  });
+}
    else {
      console.log("campi vuoti, impossibile aggiungere il testo")
      this.openMessageNoAdd();
@@ -76,7 +80,7 @@ export class AddComponent {
     inputTitle.value = "";
     var inputAuthor: HTMLInputElement = document.getElementById("Autore") as HTMLInputElement;
     inputAuthor.value = "";
-    var inputPosition: HTMLInputElement = document.getElementById("Posizione") as HTMLInputElement;
+    var inputPosition: HTMLInputElement = document.getElementById("ID") as HTMLInputElement;
     inputPosition.value = "";
   }
   
