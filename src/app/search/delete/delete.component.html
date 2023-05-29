@@ -1,1 +1,2 @@
-<button><span class="material-symbols-outlined" (click)="deleteBook()"> delete</span></button>
+<button (click)="deleteBook()" (click)="openMessage()"><span class="material-symbols-outlined" > delete</span></button>
+<p *ngIf= "open">Impossibile eliminare il documento! Dev'essere prima restituito dal prestatario  <button (click)="closeMessage()"> Indietro </button></p>

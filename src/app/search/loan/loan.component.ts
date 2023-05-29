@@ -17,7 +17,9 @@ import { Document } from '../../document.model';
 export class LoanComponent {
   @Input() documentId: number;
   @Input() isBorrowed: boolean; 
-  selezionata: boolean = false;
+  selezionataLoan: boolean = false;
+  selezionataGiveback: boolean = false;
+
   borrower: string;
   title: string;
   author: string;
@@ -26,10 +28,16 @@ export class LoanComponent {
   
 
   openLoan(){
-    this.selezionata = true; 
+    this.selezionataLoan = true; 
   };
   closeLoan() {
-    this.selezionata = false;
+    this.selezionataLoan = false;
+  }
+  openGiveback(){
+    this.selezionataGiveback = true; 
+  };
+  closeGiveback() {
+    this.selezionataGiveback = false;
   }
 
   constructor(private archiveService: ArchiveService){}
@@ -45,22 +53,21 @@ export class LoanComponent {
     });
   }
   
+
+  givebackDocuments(){
+    this.archiveService.getDocuments().subscribe((documents: Document[]) => {
+      const updatedDocuments = documents.map((document: Document) => {
+        if (document.position === this.documentId) {
+          document.borrower = 'disponibile';
+        }
+        return document;
+      });
+      this.archiveService.saveDocuments(updatedDocuments).subscribe();
+    });
+  }
   
 
-/*
-  loanDocuments(): void {
-    this.archiveService.getDocuments().subscribe((docs) =>{
-      const selectedDocs = docs.map(doc => {
-          return {
-          position:  doc.position, 
-          title: doc.title, 
-          author: doc.author, 
-          borrower: this.borrower};
-      });
-        this.archiveService.saveDocuments(selectedDocs).subscribe();
-    }); 
-  }
-  */
+
 }
 
  

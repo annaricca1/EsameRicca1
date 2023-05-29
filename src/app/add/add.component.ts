@@ -28,7 +28,6 @@ export class AddComponent {
     this.selezione = false;
     this.selezione2 = false;
   }
-
   openMessage(){
     this.selezione2 =true;
   }
