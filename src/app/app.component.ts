@@ -1,8 +1,6 @@
 import { CommonModule } from '@angular/common';
-import { HttpClient } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { AddComponent } from './add/add.component';
-import { Document } from './document.model';
 import { SearchComponent } from './search/search.component';
 
 @Component({
