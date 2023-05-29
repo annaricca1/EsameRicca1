@@ -23,7 +23,6 @@ export class ArchiveService {
  
   saveDocuments(documents: Document[]): Observable<any> {
     const url = this.apiUrl + 'set?key=' + this.apiKey;
-    console.log(JSON.stringify(documents));
     return this.http.post<any>(url, JSON.stringify(documents));
   }
 
@@ -36,7 +35,7 @@ export class ArchiveService {
 
   deleteBook(book: Document): void {
     this.getDocuments().subscribe((docs) => {
-      const filteredDocs = docs.filter((doc) => doc.title !== book.title || doc.author !== book.author);
+      const filteredDocs = docs.filter((doc) => doc.position !== book.position);
       this.saveDocuments(filteredDocs).subscribe();
     });
   }

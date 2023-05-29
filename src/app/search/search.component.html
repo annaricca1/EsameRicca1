@@ -1,13 +1,19 @@
 <div>
   <app-input label="Cerca" (inputValue)="search($event)"></app-input>
 </div>
-
+<p *ngIf="message">{{ message }}</p>
 <ul>
   <li *ngFor="let document of searchResults">
-    ID {{ document.position }} - Titolo: {{ document.title }} - Autore: {{ document.author }} - Prestito: {{ document.borrower}}
-    <br>
-    <app-delete [document]="document"></app-delete>
-    <app-loan [isBorrowed]= "document.borrower != 'disponibile' ? true: false" [documentId]="document.position"></app-loan>
-  
+    ID {{ document.position }} - Titolo: {{ document.title }} - Autore:
+    {{ document.author }} - Prestito: {{ document.borrower }}
+    <br />
+    <app-delete
+      [document]="document"
+      (updateDocument)="update($event)"
+    ></app-delete>
+    <app-loan
+      [isBorrowed]="document.borrower != 'disponibile' ? true : false"
+      [documentId]="document.position"
+    ></app-loan>
   </li>
 </ul>

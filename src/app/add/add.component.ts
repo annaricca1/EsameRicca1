@@ -15,6 +15,7 @@ import { InputComponent } from '../input/input.component';
 export class AddComponent {
   selezione: boolean = false;
   selezione2: boolean = false;
+  selezione3: boolean = false;
 
   constructor(private archiveService: ArchiveService) {}
 
@@ -23,23 +24,47 @@ export class AddComponent {
 
   openAdd(){
     this.selezione = true; 
-  };
+  }
   closeAdd() {
     this.selezione = false;
-    this.selezione2 = false;
+    ;
   }
-  openMessage(){
+  openMessageAdd(){
     this.selezione2 =true;
   }
+  openMessageNoAdd () {
+    this.selezione3 = true; 
+  }
+  closeMessage() {
+    this.selezione2 = false;
+    this.selezione3 = false;
+  }
+  
 
 
   addBook() {
-    this.archiveService.addBook({
-      title: this.title,
-      author: this.author,
-      position: Math.round(Math.random()*100),
-      borrower: 'disponibile',
-    });
+    if (this.title && this.author !== ''){
+      this.archiveService.addBook({
+        title: this.title,
+        author: this.author,
+        position: Math.round(Math.random()*100),
+        borrower: 'disponibile',
+      });
+      this.openMessageAdd();
+
+    }
+   else {
+     console.log("campi vuoti, impossibile aggiungere il testo")
+     this.openMessageNoAdd();
+   }
+   this.reset();
+  }
+
+  reset() {  
+    var inputTitle: HTMLInputElement = document.getElementById("Titolo") as HTMLInputElement;
+    inputTitle.value = "";
+    var inputAuthor: HTMLInputElement = document.getElementById("Autore") as HTMLInputElement;
+    inputAuthor.value = "";
   }
   
 }

@@ -3,12 +3,14 @@
 <div class="add-content" *ngIf = "selezione !== false">
   <app-input label="Titolo" (inputValue)="title = $event"></app-input><br>
   <app-input label="Autore" (inputValue)="author = $event"></app-input> <br>
-<button (click)="addBook()" (click)="openMessage()"><span class="material-symbols-outlined" >
+<button (click)="addBook()"><span class="material-symbols-outlined" >
   add_circle
   </span></button>   <button (click)="closeAdd()"><span class="material-symbols-outlined">
     close
     </span>  </button>
 
-<p *ngIf = "selezione2 !== false">Documento aggiunto con successo!   <button (click)="closeAdd()"> Esci </button>
+<p *ngIf = "selezione2 !== false">Documento aggiunto con successo!   <button (click)="closeMessage()"> Esci </button>
+</p>
+<p *ngIf = "selezione3 !== false"> Impossibile aggiungere il documento, sono presenti campi vuoti<button (click)="closeMessage()"> Esci </button>
 </p>
 </div>

@@ -1,48 +1,45 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, Output, Input, EventEmitter } from '@angular/core';
 import { ArchiveService } from '../../archive.service';
 import { Document } from '../../document.model';
-
 
 @Component({
   selector: 'app-delete',
   templateUrl: './delete.component.html',
   styleUrls: ['./delete.component.css'],
   standalone: true,
-  imports:[CommonModule],
-  providers:[ArchiveService]
+  imports: [CommonModule],
+  providers: [ArchiveService],
 })
-export class DeleteComponent{
-  @Input() document: Document = new Document(0, "", "", "")
+export class DeleteComponent {
+  @Input() document: Document = new Document(0, '', '', '');
+  @Output() updateDocument = new EventEmitter<string>();
   title: string = '';
   author: string = '';
   open: boolean = false;
 
-  openMessage(){
-    if (this.document.borrower !== 'disponibile'){
-      this.open = true; 
+  openMessage() {
+    if (this.document.borrower !== 'disponibile') {
+      this.open = true;
     }
   }
-  closeMessage(){
+  closeMessage() {
     this.open = false;
-    }
+  }
 
   constructor(private archiveService: ArchiveService) {}
   deleteBook() {
-    if (this.document.borrower !== 'disponibile'){
-      console.log("Non si può eliminare");
+    if (this.document.borrower !== 'disponibile') {
+      this.openMessage();
+    } else {
+      const bookToDelete: Document = {
+        title: "", // Questo valore non è rilevante per la cancellazione
+        author: "", // Questo valore non è rilevante per la cancellazione
+        position: this.document.position, 
+        borrower: '', // Questo valore non è rilevante per la cancellazione
+      };
+      this.archiveService.deleteBook(bookToDelete);
+      this.updateDocument.emit('eliminato');
     }
-    else{
-    console.log(this.document);
-    const bookToDelete: Document = {
-      title: this.document.title,
-      author: this.document.author,
-      position: 0, // Questo valore non è rilevante per la cancellazione
-      borrower: '', // Questo valore non è rilevante per la cancellazione
-    };
-    this.archiveService.deleteBook(bookToDelete);
   }
 }
-  
-  }
-
