@@ -16,7 +16,7 @@ export class AddComponent {
   selezione: boolean = false;
   selezione2: boolean = false;
   selezione3: boolean = false;
-  generatedNumbers: number[] = [];
+  positionList: number[] = [];
 
   constructor(private archiveService: ArchiveService) {}
 
@@ -45,17 +45,23 @@ export class AddComponent {
 
 
   addBook() {
-    if (this.title && this.author !== ''){
-      const pos = this.generateUniquePosition();
+    if (this.title && this.author && this.position){
+      if (this.positionList.includes(this.position)) {
+        console.log('Posizione già presente nella biblioteca');
+        this.openMessageNoAdd();
+      } 
+      else {
+      this.positionList.push(this.position),
+      console.log(this.positionList);
       this.archiveService.addBook({
         title: this.title,
         author: this.author,
-        position: pos, //Math.round(Math.random()*100),
+        position: this.position,
         borrower: 'disponibile',
       });
       this.openMessageAdd();
-
     }
+  }
    else {
      console.log("campi vuoti, impossibile aggiungere il testo")
      this.openMessageNoAdd();
@@ -63,21 +69,15 @@ export class AddComponent {
    this.reset();
   }
 
-  generateUniquePosition(): number {
-    const position = Math.round(Math.random() * 100);
-    if (this.generatedNumbers.includes(position)) {
-      return this.generateUniquePosition(); // Ricorsione se il numero è già presente
-    } else {
-      this.generatedNumbers.push(position);
-      return position;
-    }
-  }
 
+ 
   reset() {  
     var inputTitle: HTMLInputElement = document.getElementById("Titolo") as HTMLInputElement;
     inputTitle.value = "";
     var inputAuthor: HTMLInputElement = document.getElementById("Autore") as HTMLInputElement;
     inputAuthor.value = "";
+    var inputPosition: HTMLInputElement = document.getElementById("Posizione") as HTMLInputElement;
+    inputPosition.value = "";
   }
   
 }

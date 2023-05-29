@@ -8,7 +8,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 })
 export class InputComponent {
   @Input() label: string = 'label';
-  @Output() inputValue = new EventEmitter<string>();
+  @Output() inputValue = new EventEmitter<any>();
 
   onChange(event: Event) {
     this.inputValue.emit((event.target as HTMLInputElement).value);
