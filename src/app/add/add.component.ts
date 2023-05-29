@@ -16,6 +16,7 @@ export class AddComponent {
   selezione: boolean = false;
   selezione2: boolean = false;
   selezione3: boolean = false;
+  generatedNumbers: number[] = [];
 
   constructor(private archiveService: ArchiveService) {}
 
@@ -45,13 +46,13 @@ export class AddComponent {
 
   addBook() {
     if (this.title && this.author !== ''){
+      const pos = this.generateUniquePosition();
       this.archiveService.addBook({
         title: this.title,
         author: this.author,
-        position: this.position, //Math.round(Math.random()*100),
+        position: pos, //Math.round(Math.random()*100),
         borrower: 'disponibile',
       });
-      this.position++;
       this.openMessageAdd();
 
     }
@@ -60,6 +61,16 @@ export class AddComponent {
      this.openMessageNoAdd();
    }
    this.reset();
+  }
+
+  generateUniquePosition(): number {
+    const position = Math.round(Math.random() * 100);
+    if (this.generatedNumbers.includes(position)) {
+      return this.generateUniquePosition(); // Ricorsione se il numero è già presente
+    } else {
+      this.generatedNumbers.push(position);
+      return position;
+    }
   }
 
   reset() {  
