@@ -44,7 +44,7 @@ export class AddComponent {
     this.selezione3 = true; 
     setInterval(() => {
       this.selezione3 = false;
-    }, 1500);
+    }, 4000);
   }
   
   

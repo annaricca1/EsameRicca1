@@ -22,11 +22,12 @@ export class DeleteComponent {
   openMessage() {
     if (this.document.borrower !== 'disponibile') {
       this.open = true;
+      setInterval(() => {
+        this.open = false;
+      }, 2000);
     }
   }
-  closeMessage() {
-    this.open = false;
-  }
+ 
 
   constructor(private archiveService: ArchiveService) {}
   deleteBook() {

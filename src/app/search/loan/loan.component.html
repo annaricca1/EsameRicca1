@@ -6,12 +6,12 @@
 
   <app-input label="Nome" [type]="'text'" (inputValue)="name = $event"> </app-input><br>
 
-  <app-input label="Cognome" [type]="'text'" (inputValue)="surname = $event"> </app-input>
+  <app-input label="Cognome" [type]="'text'" (inputValue)="surname = $event"> </app-input><br>
 
   <button (click)="loanDocuments()"> Procedi </button>  
   <button (click)="closeLoan()">Annulla </button>
   <br>
-  <span *ngIf= "message">Mancano dei dati!</span>
+  <span *ngIf= "message" id="mancanti">DATI MANCANTI</span>
 </p>
 
 <button *ngIf= " isBorrowed" (click)="openGiveback()"><span class="material-symbols-outlined" id="restituisci">

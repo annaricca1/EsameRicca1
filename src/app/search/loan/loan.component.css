@@ -9,6 +9,10 @@
   color: black;
   
 }
+#mancanti{
+  color:red;
+  font-family: Arial, Helvetica, sans-serif;
+}
 button{
   background-color: transparent;
   background-repeat: no-repeat;
