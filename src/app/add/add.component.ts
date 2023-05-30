@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { ArchiveService } from '../archive.service';
 import { InputComponent } from '../input/input.component';
 
@@ -17,6 +17,7 @@ export class AddComponent {
   selezione2: boolean = false;
   selezione3: boolean = false;
   positionList: number[] = [];
+  message: string;
 
   constructor(private archiveService: ArchiveService) {}
 
@@ -24,8 +25,10 @@ export class AddComponent {
   author: string = '';
   position: number = 0;
 
+  
   openAdd(){
     this.selezione = true; 
+    
   }
   closeAdd() {
     this.selezione = false;
@@ -33,14 +36,17 @@ export class AddComponent {
   }
   openMessageAdd(){
     this.selezione2 =true;
+    setInterval(() => {
+      this.selezione2 = false;
+    }, 1500);
   }
   openMessageNoAdd () {
     this.selezione3 = true; 
+    setInterval(() => {
+      this.selezione3 = false;
+    }, 1500);
   }
-  closeMessage() {
-    this.selezione2 = false;
-    this.selezione3 = false;
-  }
+  
   
 
 
@@ -63,14 +69,18 @@ export class AddComponent {
         borrower: 'disponibile',
       });
       this.openMessageAdd();
+      this.reset();
+
+
     }
   });
 }
    else {
      console.log("campi vuoti, impossibile aggiungere il testo")
      this.openMessageNoAdd();
+     this.reset();
+
    }
-   this.reset();
   }
 
   reset() {  

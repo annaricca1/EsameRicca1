@@ -37,6 +37,7 @@ export class SearchComponent {
     var inputCerca: HTMLInputElement = document.getElementById("Cerca") as HTMLInputElement;
     inputCerca.value = "";
   }
+  
 
   search(value: string) {
     if (value == '') {

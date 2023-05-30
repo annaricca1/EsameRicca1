@@ -6,14 +6,14 @@
   <li *ngFor="let document of searchResults">
     ID {{ document.position }} - Titolo: {{ document.title }} - Autore:
     {{ document.author }} - Prestito: {{ document.borrower }}
-    <br />
+    
     <app-delete
       [document]="document"
-      (updateDocument)="update($event)"
-    ></app-delete>
+      (updateDocument)="update($event)"></app-delete>
     <app-loan
       [isBorrowed]="document.borrower != 'disponibile' ? true : false"
       [documentId]="document.position" (updateDocument)="update($event)"
     ></app-loan>
+    
   </li>
 </ul>

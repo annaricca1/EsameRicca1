@@ -14,6 +14,7 @@ import { Document } from '../../document.model';
 export class DeleteComponent {
   @Input() document: Document = new Document(0, '', '', '');
   @Output() updateDocument = new EventEmitter<string>();
+  @Output() deleteMessage = new EventEmitter<string>();
   title: string = '';
   author: string = '';
   open: boolean = false;
@@ -40,6 +41,7 @@ export class DeleteComponent {
       };
       this.archiveService.deleteBook(bookToDelete);
       this.updateDocument.emit('eliminato');
+      this.deleteMessage.emit();
     }
   }
 }
