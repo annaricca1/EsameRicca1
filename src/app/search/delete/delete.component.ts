@@ -41,7 +41,7 @@ export class DeleteComponent {
         borrower: '', // Questo valore non è rilevante per la cancellazione
       };
       this.archiveService.deleteBook(bookToDelete);
-      this.updateDocument.emit('eliminato');
+      this.updateDocument.emit('Libro eliminato con successo');
       this.deleteMessage.emit();
     }
   }

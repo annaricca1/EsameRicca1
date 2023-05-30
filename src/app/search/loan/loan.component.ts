@@ -44,7 +44,7 @@ export class LoanComponent {
     this.message = true;
     setInterval(() => {
       this.message = false;
-    }, 2000);
+    }, 3000);
   }
 
   constructor(private archiveService: ArchiveService){}
