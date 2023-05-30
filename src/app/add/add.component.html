@@ -4,9 +4,9 @@
   <app-input label="Titolo" [type]="'text'"(inputValue)="title = $event"></app-input><br>
   <app-input label="Autore" [type]="'text'"(inputValue)="author = $event"></app-input> <br>
   <app-input label="ID" [type]="'number'"(inputValue)="position = $event" ></app-input> <br>
-<button (click)="addBook()"><span class="material-symbols-outlined" >
+<button (click)="addBook()"><span class="material-symbols-outlined" id="open" >
   add_circle
-  </span></button>   <button (click)="closeAdd()"><span class="material-symbols-outlined">
+  </span></button>   <button (click)="closeAdd()"><span class="material-symbols-outlined" id="close">
     close
     </span>  </button>
 

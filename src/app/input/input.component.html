@@ -1,17 +1,9 @@
-<!--
-<label for="{{ label }}">{{ label }}: </label>
-<input
-  class="app-input"
-  #textVale
-  (input)="onChange($event)"
-  id="{{ label }}"
-/>
--->
-<label for="{{ label }}">{{ label }}: </label>
+
 <input
   class="app-input"
   #textVale
   (input)="onChange($event)"
   id="{{ label }}"
   [type]="type" 
+  placeholder=" {{label}}"
 />

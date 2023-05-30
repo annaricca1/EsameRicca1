@@ -1,7 +1,7 @@
 
 p{
   font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-  color: #A0522D;
+  color: #4F4F4F;
   text-align: left;
   font-weight: bold;
 }
@@ -12,12 +12,16 @@ button {
   cursor: pointer;
   overflow: hidden;
   outline: none;
-  color: #A0522D;  
+  color: #4F4F4F;  
 
 }
-
-.material-symbols-outlined{
-  font-size: 35px;
+#open{
+  font-size: 30px;
+  color: green;
+}
+#close{
+  font-size: 30px;
+  color: red;
 }
 
 .add-content{
