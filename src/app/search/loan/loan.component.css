@@ -1,10 +1,15 @@
 
 .material-symbols-outlined{
   font-size: 20px;
-  color: black;
+  color: #008000	;
   
 }
-.button1{
+.material-symbols-outlined1{
+  font-size: 20px;
+  color: grey;
+  
+}
+button{
   background-color: transparent;
   background-repeat: no-repeat;
   border: none;

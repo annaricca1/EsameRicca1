@@ -1,18 +1,19 @@
-h1,h2{
-  color: #8B4513	;
+
+
+
+h1,
+h2 {
+  margin-top: 0px;
+  padding-top: 0px;
+
+  color: #404040	;
   font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
   text-align: center;
 }
-body{
-  background-color: aliceblue;
-}
 
-
-.content{
+.content {
   text-align: center;
   font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-  color: #A0522D;
+  color: #a0522d;
   font-weight: bold;
 }
-  
-

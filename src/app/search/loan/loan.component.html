@@ -1,13 +1,16 @@
-<button (click)="openLoan()" class="button1" *ngIf="!isBorrowed">
+<button (click)="openLoan()"  *ngIf="!isBorrowed">
   <span class="material-symbols-outlined" > menu_book </span></button>
 <p *ngIf = "selezionataLoan !== false"> Vuoi prendere in prestito questo libro? <br>
   Per continuare devi inserire alcuni dati:<br> 
-  <app-input label="Nome e cognome" [type]="'text'" (inputValue)="borrower = $event"> </app-input>
+  <app-input label="Nome" [type]="'text'" (inputValue)="name = $event"> </app-input><br>
+  <app-input label="Cognome" [type]="'text'" (inputValue)="surname = $event"> </app-input>
   <button (click)="loanDocuments()"> Procedi </button>  
   <button (click)="closeLoan()">Annulla </button>
+  <br>
+  <span *ngIf= "message">Mancano dei dati!</span>
 </p>
 
-<button *ngIf= " isBorrowed " class="button1" (click)="openGiveback()"><span class="material-symbols-outlined">
+<button *ngIf= " isBorrowed " (click)="openGiveback()"><span class="material-symbols-outlined1">
   redo
   </span>
   </button> 

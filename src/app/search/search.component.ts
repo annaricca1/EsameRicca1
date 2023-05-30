@@ -33,7 +33,9 @@ export class SearchComponent {
     this.message = message;
     setInterval(() => {
       this.message = '';
-    }, 1000);
+    }, 1500);
+    var inputCerca: HTMLInputElement = document.getElementById("Cerca") as HTMLInputElement;
+    inputCerca.value = "";
   }
 
   search(value: string) {

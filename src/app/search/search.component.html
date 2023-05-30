@@ -13,7 +13,7 @@
     ></app-delete>
     <app-loan
       [isBorrowed]="document.borrower != 'disponibile' ? true : false"
-      [documentId]="document.position"
+      [documentId]="document.position" (updateDocument)="update($event)"
     ></app-loan>
   </li>
 </ul>

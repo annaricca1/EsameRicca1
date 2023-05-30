@@ -11,5 +11,6 @@ import { SearchComponent } from './search/search.component';
   imports: [CommonModule, AddComponent, SearchComponent],
 })
 export class AppComponent {
-  
+  selezAdd: boolean = true;
+
 }

@@ -73,8 +73,6 @@ export class AddComponent {
    this.reset();
   }
 
-
- 
   reset() {  
     var inputTitle: HTMLInputElement = document.getElementById("Titolo") as HTMLInputElement;
     inputTitle.value = "";

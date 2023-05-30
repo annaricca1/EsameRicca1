@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { InputComponent } from '../../input/input.component';
 import { ArchiveService } from '../../archive.service';
 import { CommonModule } from '@angular/common';
@@ -17,13 +17,14 @@ import { Document } from '../../document.model';
 export class LoanComponent {
   @Input() documentId: number;
   @Input() isBorrowed: boolean; 
+  @Output() updateDocument = new EventEmitter<string>();
+
   selezionataLoan: boolean = false;
   selezionataGiveback: boolean = false;
-
-  borrower: string;
-  title: string;
-  author: string;
+  name: string; 
+  surname: string;
   position: number; 
+  message: boolean = false;
 
   
 
@@ -39,18 +40,29 @@ export class LoanComponent {
   closeGiveback() {
     this.selezionataGiveback = false;
   }
+  openMessage(){
+    this.message = true;
+  }
 
   constructor(private archiveService: ArchiveService){}
   loanDocuments(): void {
+    if (this.name && this.surname){
     this.archiveService.getDocuments().subscribe((documents: Document[]) => {
       const updatedDocuments = documents.map((document: Document) => {
         if (document.position === this.documentId) {
-          document.borrower = this.borrower;
+          document.borrower = this.name + ' ' + this.surname;
         }
         return document;
       });
       this.archiveService.saveDocuments(updatedDocuments).subscribe();
+      this.updateDocument.emit('Libro preso in prestito');
+
+
     });
+  }
+  else {
+    this.openMessage();  
+  }
   }
   
 
@@ -63,9 +75,11 @@ export class LoanComponent {
         return document;
       });
       this.archiveService.saveDocuments(updatedDocuments).subscribe();
+      this.updateDocument.emit('Libro restituito correttamente');
+
     });
   }
-  
+
 
 
 }
