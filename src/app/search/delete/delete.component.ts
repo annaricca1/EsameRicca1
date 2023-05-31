@@ -15,8 +15,8 @@ export class DeleteComponent {
   @Input() document: Document = new Document(0, '', '', '');
   @Output() updateDocument = new EventEmitter<string>();
   @Output() deleteMessage = new EventEmitter<string>();
-  title: string = '';
-  author: string = '';
+  title: string;
+  author: string;
   open: boolean = false;
 
   openMessage() {
@@ -28,21 +28,23 @@ export class DeleteComponent {
     }
   }
  
-
   constructor(private archiveService: ArchiveService) {}
+
   deleteBook() {
     if (this.document.borrower !== 'disponibile') {
       this.openMessage();
-    } else {
+    } 
+    else {
       const bookToDelete: Document = {
-        title: "", // Questo valore non è rilevante per la cancellazione
-        author: "", // Questo valore non è rilevante per la cancellazione
+        title: "", // valore non rilevante per la cancellazione
+        author: "", // valore non rilevante per la cancellazione
         position: this.document.position, 
-        borrower: '', // Questo valore non è rilevante per la cancellazione
+        borrower: '', // valore non rilevante per la cancellazione
       };
       this.archiveService.deleteBook(bookToDelete);
       this.updateDocument.emit('Libro eliminato con successo');
       this.deleteMessage.emit();
     }
   }
+  
 }

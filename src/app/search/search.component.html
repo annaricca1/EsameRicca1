@@ -1,5 +1,5 @@
 <div>
-  <app-input label="Cerca" [type]="'text'" (inputValue)="search($event)"></app-input>
+  <app-input label="Cerca" [type]="'text'" (inputValue)="searchDocuments($event)"></app-input>
 </div>
 <p *ngIf="message">{{ message }}</p>
 <ul>
@@ -7,13 +7,11 @@
     ID {{ document.position }} - Titolo: {{ document.title }} - Autore:
     {{ document.author }} - Prestito: {{ document.borrower }}
     
-    <app-delete
-      [document]="document"
-      (updateDocument)="update($event)"></app-delete>
-    <app-loan
-      [isBorrowed]="document.borrower != 'disponibile' ? true : false"
-      [documentId]="document.position" (updateDocument)="update($event)"
-    ></app-loan>
+    <app-delete [document]="document" (updateDocument)="update($event)">
+    </app-delete>
+
+    <app-loan [isBorrowed]="document.borrower != 'disponibile' ? true : false" [documentId]="document.position" (updateDocument)="update($event)">
+    </app-loan> 
     
   </li>
 </ul>

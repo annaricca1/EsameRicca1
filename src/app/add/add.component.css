@@ -8,12 +8,11 @@ p{
 button {
   background-color: transparent;
   background-repeat: no-repeat;
-  border: none;
+  border: none; 
   cursor: pointer;
   overflow: hidden;
   outline: none;
   color: #4F4F4F;  
-
 }
 #open{
   font-size: 30px;
@@ -27,6 +26,5 @@ button {
   color:red;
   font-family: Arial, Helvetica, sans-serif;
 }
-
 .add-content{
   text-align: center;}

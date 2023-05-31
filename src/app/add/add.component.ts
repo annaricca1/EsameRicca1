@@ -52,34 +52,34 @@ export class AddComponent {
 
   addBook() {
     if (this.title && this.author && this.position){
-      this.archiveService.getDocuments().subscribe((documents) => {
-        const positions = documents.map((doc) => doc.position);
-        if (positions.includes(this.position)) {
-          console.log('Posizione già presente nella biblioteca');
-          this.openMessageNoAdd();
-        }
-      
-      else {
-      this.positionList.push(this.position),
-      console.log(this.positionList);
-      this.archiveService.addBook({
-        title: this.title,
-        author: this.author,
-        position: this.position,
-        borrower: 'disponibile',
+      this.archiveService.getDocuments().subscribe({
+        next: (documents) => {
+          const positions = documents.map((doc) => doc.position);
+          if (positions.includes(this.position)) {
+            console.log('Posizione già presente nella biblioteca');
+            this.openMessageNoAdd();
+          }
+          else {
+            this.positionList.push(this.position),
+            console.log(this.positionList);
+            this.archiveService.addBook({
+              title: this.title,
+              author: this.author,
+              position: this.position,
+              borrower: 'disponibile',
+            });
+            this.openMessageAdd();
+            this.reset();
+          }
+        },
+        error: (err) =>
+          console.error('Observer got an error: ' + JSON.stringify(err)),
       });
-      this.openMessageAdd();
-      this.reset();
-
-
     }
-  });
-}
    else {
      console.log("campi vuoti, impossibile aggiungere il testo")
      this.openMessageNoAdd();
      this.reset();
-
    }
   }
 

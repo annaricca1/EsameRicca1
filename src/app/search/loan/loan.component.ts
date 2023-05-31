@@ -26,7 +26,6 @@ export class LoanComponent {
   position: number; 
   message: boolean = false;
 
-  
 
   openLoan(){
     this.selezionataLoan = true; 
@@ -48,41 +47,46 @@ export class LoanComponent {
   }
 
   constructor(private archiveService: ArchiveService){}
+
   loanDocuments(): void {
     if (this.name && this.surname){
-    this.archiveService.getDocuments().subscribe((documents: Document[]) => {
-      const updatedDocuments = documents.map((document: Document) => {
-        if (document.position === this.documentId) {
-          document.borrower = this.name + ' ' + this.surname;
-        }
-        return document;
+      this.archiveService.getDocuments().subscribe({
+        next: (documents: Document[]) => {
+          const updatedDocuments = documents.map((document: Document) => {
+          if (document.position === this.documentId) {
+            document.borrower = this.name + ' ' + this.surname;
+          }
+          return document;
+          });
+          this.archiveService.saveDocuments(updatedDocuments).subscribe();
+          this.updateDocument.emit('Libro preso in prestito');
+        },
+        error: (err) =>
+          console.error('Observer got an error: ' + JSON.stringify(err)),
       });
-      this.archiveService.saveDocuments(updatedDocuments).subscribe();
-      this.updateDocument.emit('Libro preso in prestito');
-
-
-    });
-  }
-  else {
-    this.openMessage();  
-  }
+    }
+    else {
+      this.openMessage();  
+    }
   }
   
 
   givebackDocuments(){
-    this.archiveService.getDocuments().subscribe((documents: Document[]) => {
-      const updatedDocuments = documents.map((document: Document) => {
+    this.archiveService.getDocuments().subscribe({
+      next: (documents: Document[]) => {
+        const updatedDocuments = documents.map((document: Document) => {
         if (document.position === this.documentId) {
           document.borrower = 'disponibile';
         }
         return document;
       });
-      this.archiveService.saveDocuments(updatedDocuments).subscribe();
-      this.updateDocument.emit('Libro restituito correttamente');
-
+        this.archiveService.saveDocuments(updatedDocuments).subscribe();
+        this.updateDocument.emit('Libro restituito correttamente');
+      },
+      error: (err) =>
+        console.error('Observer got an error: ' + JSON.stringify(err)),
     });
   }
-
 
 
 }
