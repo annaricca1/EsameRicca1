@@ -17,7 +17,7 @@ export class InputComponent {
     
     if (this.type === 'number') {
       value = parseFloat(value); // Converti il valore in un numero
-      if (isNaN(value)) {
+      if (isNaN(value) || value < 0 ) {
         value = null; // Imposta il valore a null se non è un numero valido
       }
     }
