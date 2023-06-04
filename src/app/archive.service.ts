@@ -58,14 +58,6 @@ Metodo per gestire la rimozione di un documento. Dopo aver scaricato il database
     });
   
   }
-
-
-  
-  
-  
-  
-
- 
   
   
 }

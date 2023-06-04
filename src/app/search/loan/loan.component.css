@@ -1,3 +1,12 @@
+button{
+  background-color: transparent;
+  background-repeat: no-repeat;
+  border: none;
+  cursor: pointer;
+  overflow: hidden;
+  outline: none;
+}
+
 #prestito{
   font-size: 20px;
   color: #008000	;  
@@ -9,12 +18,4 @@
 #mancanti{
   color:red;
   font-family: Arial, Helvetica, sans-serif;
-}
-button{
-  background-color: transparent;
-  background-repeat: no-repeat;
-  border: none;
-  cursor: pointer;
-  overflow: hidden;
-  outline: none;
 }

@@ -8,20 +8,23 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 })
 export class InputComponent {
   @Input() label: string = 'label';
-  @Input() type: 'text' | 'number' = 'text'; // Aggiunto il tipo di input
+  @Input() type: 'text' | 'number' = 'text'; 
 
   @Output() inputValue = new EventEmitter<any>();
 
+/*
+Funzione per la gestione dei valori inseriti nell'Input Element e per l'utilizzo di questi in altri componenti
+*/
   onChange(event: Event) {
     let value: any = (event.target as HTMLInputElement).value;
-    
     if (this.type === 'number') {
-      value = parseFloat(value); // Converti il valore in un numero
+      value = parseFloat(value); // Converte il valore in un numero
       if (isNaN(value) || value < 0 ) {
-        value = null; // Imposta il valore a null se non è un numero valido
+        value = null; // Il valore impostato a null se il numero non è valido
       }
     }
-
     this.inputValue.emit(value);
   }
+
+  
 }

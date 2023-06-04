@@ -16,6 +16,7 @@ export class AddComponent {
   selezione: boolean = false;
   selezione2: boolean = false;
   selezione3: boolean = false;
+  selezione4: boolean = false;
   positionList: number[] = [];
   message: string;
 
@@ -25,39 +26,52 @@ export class AddComponent {
   author: string = '';
   position: number = 0;
 
-  
+/*
+Funzioni che permettono di mostrare o meno i campi per l'aggiunta di un nuovo documeneto nella biblioteca
+*/
   openAdd(){
     this.selezione = true; 
-    
   }
   closeAdd() {
     this.selezione = false;
-    ;
   }
+
+/*
+Funzioni che mostrano per alcuni secondi, grazie a setInterval, messaggi relativi all'aggiunta con successo di un documento o di impossibilità nel caricarlo (dati mancanti o posizione già esistente)
+*/
   openMessageAdd(){
     this.selezione2 =true;
     setInterval(() => {
       this.selezione2 = false;
     }, 1500);
   }
-  openMessageNoAdd () {
+  openMessagePosition () {
     this.selezione3 = true; 
     setInterval(() => {
       this.selezione3 = false;
     }, 4000);
   }
+  openMessageNoAdd () {
+    this.selezione4 = true; 
+    setInterval(() => {
+      this.selezione4 = false;
+    }, 4000);
+  }
   
   
-
-
-  addBook() {
+/*
+add() permette di aggiungere un nuovo documento alla biblioteca, richiamando addBook() dal service, prendendo in input dall'utente il titolo, l'autore e la posizione dello stesso. Il campo borrower non viene preso in input ma assume il valore di 'disponibile', in quanto nel momento dell'aggiunta, il libro non è ancora stato preso in prestito da nessuno.
+Vi è anche un controllo sui dati inseriti in input: che siano stati compilati e che la posizione inserita non sia già stata utilizzata
+*/
+  add() {
     if (this.title && this.author && this.position){
       this.archiveService.getDocuments().subscribe({
         next: (documents) => {
           const positions = documents.map((doc) => doc.position);
           if (positions.includes(this.position)) {
             console.log('Posizione già presente nella biblioteca');
-            this.openMessageNoAdd();
+            this.openMessagePosition();
+            this.reset();
           }
           else {
             this.positionList.push(this.position),
@@ -83,6 +97,9 @@ export class AddComponent {
    }
   }
 
+/*
+Funzione per eliminare dagli Input Element i caratteri digitati
+*/
   reset() {  
     var inputTitle: HTMLInputElement = document.getElementById("Titolo") as HTMLInputElement;
     inputTitle.value = "";

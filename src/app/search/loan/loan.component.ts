@@ -26,7 +26,9 @@ export class LoanComponent {
   position: number; 
   message: boolean = false;
 
-
+/*
+Funzioni permettono di mostrare o meno il prestito o la restituzione di un documento
+*/
   openLoan(){
     this.selezionataLoan = true; 
   };
@@ -39,6 +41,10 @@ export class LoanComponent {
   closeGiveback() {
     this.selezionataGiveback = false;
   }
+
+  /*
+  Funzione per la visualizzazione di un messaggio per informare l'utente che alcuni dati sono mancanti
+   */
   openMessage(){
     this.message = true;
     setInterval(() => {
@@ -48,6 +54,10 @@ export class LoanComponent {
 
   constructor(private archiveService: ArchiveService){}
 
+
+/*
+loanDocuments() se i campi sono entrambi compilati, richiama la getDocuments per scaricare l'archivio. Dopodichè, in base alla posizione del documento selezionato, modifica il campo borrower con il name e il surname inseriti in input dall'utente. Viene poi invocata la saveDocumens per ricaricare i dati aggiornati 
+*/
   loanDocuments(): void {
     if (this.name && this.surname){
       this.archiveService.getDocuments().subscribe({
@@ -70,7 +80,9 @@ export class LoanComponent {
     }
   }
   
-
+/*
+givebackDocumetns() ha funzionalità inversa rispetto alla funzione sopradescritta, infatti in base alla posizione del documento selezionato, il campo borrower viene modificato, passando dal name e il surname, a 'disponibile'. 
+*/
   givebackDocuments(){
     this.archiveService.getDocuments().subscribe({
       next: (documents: Document[]) => {

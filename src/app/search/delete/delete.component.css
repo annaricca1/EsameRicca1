@@ -1,3 +1,7 @@
+p{
+  color:red;
+  font-family: Arial, Helvetica, sans-serif;
+}
 button {
   background-color: transparent;
   background-repeat: no-repeat;
@@ -6,11 +10,9 @@ button {
   overflow: hidden;
   outline: none;
 }
+
 .material-symbols-outlined{
   font-size: 20px;
   color: #ff0000	; 
 }
-p{
-  color:red;
-  font-family: Arial, Helvetica, sans-serif;
-}
+

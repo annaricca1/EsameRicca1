@@ -4,7 +4,7 @@
   <app-input label="Titolo" [type]="'text'"(inputValue)="title = $event"></app-input><br>
   <app-input label="Autore" [type]="'text'"(inputValue)="author = $event"></app-input> <br>
   <app-input label="ID" [type]="'number'"(inputValue)="position = $event" ></app-input> <br>
-<button (click)="addBook()"><span class="material-symbols-outlined" id="open" >
+<button (click)="add()"><span class="material-symbols-outlined" id="open" >
   add_circle
   </span></button>   <button (click)="closeAdd()"><span class="material-symbols-outlined" id="close">
     close
@@ -12,6 +12,8 @@
 
 <p *ngIf = "selezione2 !== false">Documento aggiunto con successo!
 </p>
-<p *ngIf = "selezione3 !== false" id="mancanti"> IMPOSSIBILE AGGIUNGERE IL DOCUMENTO<br>Controlla di aver riempito tutti i campi o di non aver inserito un ID già in uso
+<p *ngIf = "selezione3 !== false" id="mancanti"> IMPOSSIBILE AGGIUNGERE IL DOCUMENTO<br>Posizione già in uso
+</p>
+<p *ngIf = "selezione4 !== false" id="mancanti"> IMPOSSIBILE AGGIUNGERE IL DOCUMENTO<br>Campi mancanti
 </p>
 </div>

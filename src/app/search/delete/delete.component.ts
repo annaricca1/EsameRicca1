@@ -19,6 +19,9 @@ export class DeleteComponent {
   author: string;
   open: boolean = false;
 
+  /*
+  Funzione che permette di visualizzare per alcuni secondi, grazie a setInterval, un messaggio di impossibile cancellazione del documento
+  */
   openMessage() {
     if (this.document.borrower !== 'disponibile') {
       this.open = true;
@@ -30,7 +33,10 @@ export class DeleteComponent {
  
   constructor(private archiveService: ArchiveService) {}
 
-  deleteBook() {
+/*
+delete() gestisce l'eliminazione di un documento dalla biblioteca, nel caso in cui questo non sia già stato prestato (viene mostrato messaggio di errore). Il documento viene selezionato in base alla posizione, che è l'unico valore utile ai fini della cancellazione in quanto univoco. Una volta selezionato viene richiamata la deleteBook() dal service, lì opportunamente commentata
+*/
+  delete() {
     if (this.document.borrower !== 'disponibile') {
       this.openMessage();
     } 
