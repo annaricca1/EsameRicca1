@@ -42,8 +42,8 @@ delete() gestisce l'eliminazione di un documento dalla biblioteca, nel caso in c
     } 
     else {
       const bookToDelete: Document = {
-        title: "", // valore non rilevante per la cancellazione
-        author: "", // valore non rilevante per la cancellazione
+        title: '', // valore non rilevante per la cancellazione
+        author: '', // valore non rilevante per la cancellazione
         position: this.document.position, 
         borrower: '', // valore non rilevante per la cancellazione
       };
