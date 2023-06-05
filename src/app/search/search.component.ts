@@ -25,8 +25,15 @@ export class SearchComponent {
   searchResults: Document[] = [];
   isBorrowed: boolean;
   message: string;
-
+  selezione: boolean = false; 
   constructor(private archiveService: ArchiveService) {}
+
+/*
+Funzione che se richiamata, modifica il valore del booleano che permette di visualizzare il numero di documenti trovati
+*/
+docMessage(){
+  this.selezione = true; 
+}
 
 /*
 Funzione che, quando invocata, azzera i risultati della ricerca, eliminando anche i caratteri digitati all'interno dell'input element
@@ -47,8 +54,10 @@ searchDocuments, dopo aver scaricato il contenuto del database tramite getDocume
   searchDocuments(value: string) {
     if (value == '') {
       this.searchResults = [];
+      this.selezione = false; 
       return;
     }
+    this.docMessage();
     const lowercaseValue = value.toLowerCase(); // converte il valore della ricerca in minuscolo
     this.archiveService.getDocuments().subscribe({
       next: (e) =>
