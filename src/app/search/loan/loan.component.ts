@@ -21,8 +21,8 @@ export class LoanComponent {
 
   selezionataLoan: boolean = false;
   selezionataGiveback: boolean = false;
-  name: string; 
-  surname: string;
+  name: string = ''; 
+  surname: string = '';
   position: number; 
   message: boolean = false;
 

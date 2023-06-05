@@ -70,7 +70,6 @@ Vi è anche un controllo sui dati inseriti in input: che siano stati compilati e
           const positions = documents.map((doc) => doc.position);
           if (positions.includes(this.position)) {
             this.openMessagePosition();
-            this.reset();
           }
           else {
             this.positionList.push(this.position),
@@ -89,9 +88,7 @@ Vi è anche un controllo sui dati inseriti in input: che siano stati compilati e
       });
     }
    else {
-     console.log("campi vuoti, impossibile aggiungere il testo")
      this.openMessageNoAdd();
-     this.reset();
    }
   }
 
