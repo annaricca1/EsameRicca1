@@ -64,7 +64,7 @@ add() permette di aggiungere un nuovo documento alla biblioteca, richiamando add
 Vi è anche un controllo sui dati inseriti in input: che siano stati compilati e che la posizione inserita non sia già stata utilizzata
 */
   add() {
-    if (this.title && this.author && this.position){
+    if (this.title.trim() !== '' && this.author.trim() !== '' && this.position){
       this.archiveService.getDocuments().subscribe({
         next: (documents) => {
           const positions = documents.map((doc) => doc.position);
