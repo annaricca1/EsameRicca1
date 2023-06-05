@@ -59,7 +59,7 @@ Funzioni permettono di mostrare o meno il prestito o la restituzione di un docum
 loanDocuments() se i campi sono entrambi compilati, richiama la getDocuments per scaricare l'archivio. Dopodichè, in base alla posizione del documento selezionato, modifica il campo borrower con il name e il surname inseriti in input dall'utente. Viene poi invocata la saveDocumens per ricaricare i dati aggiornati 
 */
   loanDocuments(): void {
-    if (this.name && this.surname){
+    if (this.name.trim() !== '' && this.surname.trim() !== ''){
       this.archiveService.getDocuments().subscribe({
         next: (documents: Document[]) => {
           const updatedDocuments = documents.map((document: Document) => {
