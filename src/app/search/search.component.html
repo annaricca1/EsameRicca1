@@ -2,6 +2,9 @@
   <app-input label="Cerca" [type]="'text'" (inputValue)="searchDocuments($event)"></app-input>
 </div>
 <p *ngIf="message">{{ message }}</p>
+<p *ngIf= "searchResults.length !== 0">
+  Documenti trovati: {{searchResults.length}}
+</p>
 <ul>
   <li *ngFor="let document of searchResults">
     ID {{ document.position }} - Titolo: {{ document.title }} - Autore:
