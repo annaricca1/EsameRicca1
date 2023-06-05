@@ -69,13 +69,11 @@ Vi è anche un controllo sui dati inseriti in input: che siano stati compilati e
         next: (documents) => {
           const positions = documents.map((doc) => doc.position);
           if (positions.includes(this.position)) {
-            console.log('Posizione già presente nella biblioteca');
             this.openMessagePosition();
             this.reset();
           }
           else {
             this.positionList.push(this.position),
-            console.log(this.positionList);
             this.archiveService.addBook({
               title: this.title,
               author: this.author,
